@@ -15,3 +15,5 @@ generatorConfig.xml
 **/rebel.xml
 /imgs/
 /flowcharts/
+mvnw*
+.mvn/

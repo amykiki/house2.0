@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: house-cloud-eureka-server
+
+eureka:
+  instance:
+    hostname: 127.0.0.1 #配置主机名
+  server:
+    # 是否开启保护模式
+    enable-self-preservation: true
+    # 留存的服务实例低于多少进入保护模式
+    renewal-percent-threshold: 0.6
+  client:
+    register-with-eureka: false # 配置服务注册中心是否以自己为客户端进行注册
+    fetch-registry: false # 是否取得注册信息
+    service-url:
+      # defaultZone 该配置可能没有提示，手动输入，切勿使用有提示的server-url，会引起内置tomcat报错
+      # 注册和查询都依赖改地址，多个地址以逗号分隔
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    healthcheck:
+      #开启Eureka健康检查
+      enabled: true
+
+
