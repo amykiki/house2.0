@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.april.house.cloud.common.config.HttpClientAutoConfiguration

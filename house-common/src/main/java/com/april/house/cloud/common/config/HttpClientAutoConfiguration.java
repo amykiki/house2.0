@@ -1,7 +1,9 @@
-package com.april.house.cloud.house.common.config;
+package com.april.house.cloud.common.config;
 
+import org.apache.http.ConnectionReuseStrategy;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.DefaultConnectionReuseStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -43,6 +45,8 @@ public class HttpClientAutoConfiguration {
                 .setUserAgent(properties.getAgent())
                 .setMaxConnPerRoute(properties.getMaxConnPerRoute())
                 .setMaxConnTotal(properties.getMaxConnTotal())
+                //连接可以保持，长连接
+                .setConnectionReuseStrategy(new DefaultConnectionReuseStrategy())
                 .addInterceptorFirst(logbookHttpRequestInterceptor)
                 .addInterceptorFirst(logbookHttpResponseInterceptor)
                 .build();

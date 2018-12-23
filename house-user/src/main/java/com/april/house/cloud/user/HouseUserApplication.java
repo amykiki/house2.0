@@ -1,9 +1,11 @@
-package com.april.house.cloud.house.user;
+package com.april.house.cloud.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class HouseUserApplication {
 
     public static void main(String[] args) {

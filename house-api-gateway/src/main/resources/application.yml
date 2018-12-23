@@ -1,8 +1,8 @@
 spring:
   profiles:
-    active: user1
+    active: gateway1
   application:
-    name: house-cloud-user
+    name: house-cloud-api-gateway
 
 eureka:
   instance:
@@ -18,7 +18,7 @@ eureka:
       enabled: true # 开启健康检查，依赖spring-boot-starter-actuaor
     # 表示eureka client间隔多久去拉取服务注册信息，缺省为30秒。
     # 对于api-gateway，如果要迅速获取服务注册状态，可以缩小该值
-    registry-fetch-interval-seconds: 30
+    registry-fetch-interval-seconds: 20
 
 # spring-boot2.0 actuator配置
 # 这个配置和1.X不一样
@@ -33,14 +33,14 @@ management:
       enabled: false
 ---
 server:
-  port: 8001
+  port: 8011
 
 spring:
-  profiles: user1
+  profiles: gateway1
 
 ---
 server:
-  port: 8002
+  port: 8012
 
 spring:
-  profiles: user2
+  profiles: gateway2

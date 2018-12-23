@@ -1,4 +1,4 @@
-package com.april.house.cloud.house.user;
+package com.april.house.cloud.api.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HouseUserApplicationTests {
+public class HouseApiGatewayApplicationTests {
 
     @Test
     public void contextLoads() {

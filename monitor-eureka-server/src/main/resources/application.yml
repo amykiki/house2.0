@@ -13,6 +13,7 @@ eureka:
     enable-self-preservation: true
     # 留存的服务实例低于多少进入保护模式
     renewal-percent-threshold: 0.6
+    eviction-interval-timer-in-ms: 20000
   client:
     register-with-eureka: false # 配置服务注册中心是否以自己为客户端进行注册
     fetch-registry: false # 是否取得注册信息

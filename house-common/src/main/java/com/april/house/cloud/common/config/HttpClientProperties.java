@@ -1,4 +1,4 @@
-package com.april.house.cloud.house.common.config;
+package com.april.house.cloud.common.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

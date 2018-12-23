@@ -1,4 +1,4 @@
-package com.april.house.cloud.house.comment;
+package com.april.house.cloud.comment;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
