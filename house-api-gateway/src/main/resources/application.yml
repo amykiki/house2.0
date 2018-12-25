@@ -20,6 +20,10 @@ eureka:
     # 对于api-gateway，如果要迅速获取服务注册状态，可以缩小该值
     registry-fetch-interval-seconds: 20
 
+house:
+  services:
+    user: house-cloud-user
+
 # spring-boot2.0 actuator配置
 # 这个配置和1.X不一样
 management:
@@ -33,14 +37,14 @@ management:
       enabled: false
 ---
 server:
-  port: 8011
+  port: 8001
 
 spring:
   profiles: gateway1
 
 ---
 server:
-  port: 8012
+  port: 8002
 
 spring:
   profiles: gateway2

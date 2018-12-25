@@ -8,16 +8,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
+
 /**
  * 有两种restTemplate,一种是负载均衡的，一种是直连的。
  * 统一在该类中处理
  */
-@Service
 public class GenericRest {
-    @Autowired
+
+    @Resource(name = "lbRestTemplate")
     private RestTemplate lbRestTemplate;
 
-    @Autowired
+    @Resource(name = "directTemplate")
     private RestTemplate directTemplate;
 
     public static final String DIR_FLAG = "direct://";

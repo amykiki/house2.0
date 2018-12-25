@@ -2,11 +2,20 @@ package com.april.house.cloud.common.exception;
 
 import com.april.house.cloud.common.enums.RestCode;
 
-/**
- * 包含类型的异常
- * @Creation :  2018-12-24 17:38
- * --------  ---------  --------------------------
- */
-public interface WithTypeException {
-    RestCode getRestCode();
+public class WithTypeException extends RuntimeException {
+    private RestCode restCode;
+
+    public WithTypeException(String message, RestCode restCode) {
+        super(message);
+        this.restCode = restCode;
+    }
+
+    public WithTypeException(String message) {
+        super(message);
+        this.restCode = RestCode.LACK_PARAMS;
+    }
+
+    public RestCode getRestCode() {
+        return restCode;
+    }
 }

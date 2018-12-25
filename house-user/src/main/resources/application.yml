@@ -33,14 +33,14 @@ management:
       enabled: false
 ---
 server:
-  port: 8001
+  port: 8011
 
 spring:
   profiles: user1
 
 ---
 server:
-  port: 8002
+  port: 8012
 
 spring:
   profiles: user2

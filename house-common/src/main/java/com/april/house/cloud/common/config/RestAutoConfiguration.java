@@ -14,11 +14,25 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 
 @Configuration
-public class RestAutoConfig {
+public class RestAutoConfiguration {
+
+    @Bean("lbRestTemplate")
+    @LoadBalanced
+    public RestTemplate lbRestTemplate(HttpClient httpClient) {
+        return genTemplate(httpClient);
+    }
+
+    @Bean("directTemplate")
+    //设置directTemplate，是为了测试方便，直接指定ip+端口号
+    public RestTemplate directTemplate(HttpClient httpClient) {
+        return genTemplate(httpClient);
+    }
 
     @Bean
-    @LoadBalanced
-    public RestTemplate lbRRestTemplate(HttpClient httpClient) {
+    public GenericRest genericRest() {
+        return new GenericRest();
+    }
+    private RestTemplate genTemplate(HttpClient httpClient) {
         RestTemplate template = new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
         //resttemplate需要发送请求和接收响应。发送和接收时都需要把对象序列化成一定的字符串或字节数组
         //如果发送的的字符串是包含中文字符，需要编码。默认字符集为ISO-8859，因此需要指定为UTF-8
@@ -27,16 +41,6 @@ public class RestAutoConfig {
         template.getMessageConverters().add(1, new FastJsonConverterForJson());
         return template;
     }
-
-    @Bean
-    //设置directTemplate，是为了测试方便，直接指定ip+端口号
-    public RestTemplate directTemplate(HttpClient httpClient) {
-        RestTemplate template = new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
-        template.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("utf-8")));
-        template.getMessageConverters().add(1, new FastJsonConverterForJson());
-        return template;
-    }
-
 
     private static class FastJsonConverterForJson extends FastJsonHttpMessageConverter {
         static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");

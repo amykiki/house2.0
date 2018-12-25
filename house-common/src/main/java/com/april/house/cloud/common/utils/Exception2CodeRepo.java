@@ -14,7 +14,7 @@ public class Exception2CodeRepo {
             return RestCode.UNKOWN_ERROR;
         }
 
-        if (throwable instanceof WithTypeException) {
+        if (throwable.getClass().isAssignableFrom(WithTypeException.class) ) {
             return ((WithTypeException) throwable).getRestCode();
         }
 
