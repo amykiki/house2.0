@@ -31,6 +31,13 @@ management:
   endpoint:
     shutdown:
       enabled: false
+
+ # logbook默认级别是trace
+logbook:
+  write:
+    level: info
+  format:
+    style: curl
 ---
 server:
   port: 8011

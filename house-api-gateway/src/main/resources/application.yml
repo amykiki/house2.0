@@ -35,6 +35,13 @@ management:
   endpoint:
     shutdown:
       enabled: false
+
+  # logbook默认级别是trace
+logbook:
+  write:
+    level: info
+  format:
+    style: http
 ---
 server:
   port: 8001
